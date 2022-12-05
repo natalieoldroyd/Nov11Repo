@@ -34,7 +34,6 @@ function App({request}) {
   return (
     <Suspense fallback={<HeaderFallback isHome={isHome} />}>
       <EventsListener />
-      <AnalyticsListener />
       <ShopifyProvider countryCode={countryCode}>
         <Seo
           type="defaultSeo"
