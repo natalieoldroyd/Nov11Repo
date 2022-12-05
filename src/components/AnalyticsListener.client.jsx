@@ -14,7 +14,8 @@ export default function AnalyticsListener() {
      ClientAnalytics.subscribe(
        ClientAnalytics.eventNames.PAGE_VIEW,
        (payload) => {
-         console.log(payload);
+         console.log(payload)
+         console.log('Hello');
        }
      );
    }
