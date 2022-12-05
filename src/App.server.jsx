@@ -13,7 +13,7 @@ import {
   useServerAnalytics,
   Seo,
 } from '@shopify/hydrogen';
-import {HeaderFallback, EventsListener} from '~/components';
+import {HeaderFallback, EventsListener, AnalyticsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
 
 function App({request}) {
@@ -34,6 +34,7 @@ function App({request}) {
   return (
     <Suspense fallback={<HeaderFallback isHome={isHome} />}>
       <EventsListener />
+      <AnalyticsListener />
       <ShopifyProvider countryCode={countryCode}>
         <Seo
           type="defaultSeo"
@@ -57,7 +58,7 @@ function App({request}) {
         </CartProvider>
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
-        <ShopifyAnalytics cookieDomain="hydrogen.shop" />
+        <ShopifyAnalytics cookieDomain="https://staffshopnat.com" />
       </ShopifyProvider>
     </Suspense>
   );
