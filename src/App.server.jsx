@@ -13,7 +13,7 @@ import {
   useServerAnalytics,
   Seo,
 } from '@shopify/hydrogen';
-import {HeaderFallback, EventsListener, AnalyticsListener} from '~/components';
+import {HeaderFallback, EventsListener} from '~/components';
 import {NotFound} from '~/components/index.server';
 
 function App({request}) {
