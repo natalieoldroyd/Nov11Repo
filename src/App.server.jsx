@@ -20,6 +20,7 @@ function App({request}) {
   const pathname = new URL(request.normalizedUrl).pathname;
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
+  const userCountry = request.headers.get('oxygen-buyer-country');
 
   const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
@@ -34,18 +35,17 @@ function App({request}) {
   return (
     <Suspense fallback={<HeaderFallback isHome={isHome} />}>
       <EventsListener />
-      <ShopifyProvider countryCode={countryCode}>
+      <ShopifyProvider countryCode={userCountry}>
         <Seo
           type="defaultSeo"
           data={{
-            title: 'Hydrogen',
-            description:
-              "A custom storefront powered by Hydrogen, Shopify's React-based framework for building headless.",
+            title: 'Nat Staff Store',
+            description: 'Staff store for testing.',
             titleTemplate: `%s · Hydrogen`,
           }}
         />
         <CartProvider
-          countryCode={countryCode}
+          countryCode={userCountry}
           customerAccessToken={customerAccessToken}
         >
           <Router>
