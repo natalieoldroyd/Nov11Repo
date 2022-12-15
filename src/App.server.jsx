@@ -19,12 +19,17 @@ import {NotFound} from '~/components/index.server';
 function App({request}) {
   const pathname = new URL(request.normalizedUrl).pathname;
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
-  const countryCode = localeMatch ? localeMatch[1] : undefined;
+  let countryCode = localeMatch ? localeMatch[1] : undefined;
   const userCountry = request.headers.get('oxygen-buyer-country');
 
-  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
-
   const {customerAccessToken} = useSession();
+
+  if (!countryCode) {
+    countryCode = userCountry;
+  }
+
+  // const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  const isHome = pathname === '/'
 
   useServerAnalytics({
     shopify: {
