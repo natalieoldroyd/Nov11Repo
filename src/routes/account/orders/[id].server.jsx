@@ -28,8 +28,8 @@ export default function OrderDetails({response}) {
   } = useLocalization();
   const {customerAccessToken} = useSession();
 
-  if (!customerAccessToken) return response.redirect('nataliestaffstore.account.myshopify.com');
-  if (!id) return response.redirect('/account/');
+  if (!customerAccessToken) return response.redirect('www.nataliestaffstore.account.myshopify.com');
+  if (!id) return response.redirect('www.nataliestaffstore.account.myshopify.com');
 
   const {data} = useShopQuery({
     query: ORDER_QUERY,
