@@ -28,7 +28,7 @@ export default function OrderDetails({response}) {
   } = useLocalization();
   const {customerAccessToken} = useSession();
 
-  if (!customerAccessToken) return response.redirect('/account/login');
+  if (!customerAccessToken) return response.redirect('/account/myshopify.com');
   if (!id) return response.redirect('/account/');
 
   const {data} = useShopQuery({
