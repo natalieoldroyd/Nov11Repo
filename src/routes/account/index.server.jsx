@@ -31,7 +31,7 @@ export default function Account({response}) {
   } = useLocalization();
   const {customerAccessToken} = useSession();
 
-  if (!customerAccessToken) return response.redirect('/account/myshopify.com');
+  if (!customerAccessToken) return response.redirect('nataliestaffstore.account.myshopify.com');
 
   const {data} = useShopQuery({
     query: CUSTOMER_QUERY,
@@ -45,7 +45,7 @@ export default function Account({response}) {
 
   const {customer, featuredCollections, featuredProducts} = data;
 
-  if (!customer) return response.redirect('/account/myshopify.com');
+  if (!customer) return response.redirect('nataliestaffstore.account.myshopify.com');
 
   // The logged-in analytics state.
   useServerAnalytics({
